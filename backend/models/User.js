@@ -36,8 +36,7 @@ const userSchema = new Schema({
   },
   photosUser:[{
     type: Schema.Types.ObjectId,
-    ref:'Folder'}],
-  
+    ref:'Folder'}]
 
 },{
   timestamps:true,

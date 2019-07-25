@@ -6,7 +6,7 @@ const RequestSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'User'
   },
-  creator:{
+  userPhoto:{
     type: Schema.Types.ObjectId,
     ref: 'User'
   },
@@ -22,13 +22,14 @@ const RequestSchema = new Schema({
     coordinates: [Number],
     city:String
   },
-  
+
   date:String,
 
   state:{
     type:String,
-    enum:['PENDIENTE','CURSO','FINALIZADA','CANCELADA',],
+    enum:['PENDIENTE','CURSO','FINALIZADA','CANCELADA'],
     default:'PENDIENTE'
   }
   
 })
+module.exports = model('Request',RequestSchema)

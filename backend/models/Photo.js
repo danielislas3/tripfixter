@@ -1,7 +1,7 @@
 const {Schema, model} = require ('mongoose')
 
 
-const photoSchema = new Schema({
+const PhotoSchema = new Schema({
 
   url:String,
 
@@ -15,4 +15,4 @@ const photoSchema = new Schema({
   versionKey:false
 })
 
-module.exports = model('Photo',photoSchema)
+module.exports = model('Photo',PhotoSchema)
