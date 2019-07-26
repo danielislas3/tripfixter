@@ -21,7 +21,8 @@ router.delete('/users/:id',deleteUser)
 /****************FOTOS************ */
 
 //folder de una sesion
-router.post('/photos', uploadCloud.single('photos'), upload)
+//para un archivo: uploadCloud.single('photos')
+router.post('/photos', uploadCloud.array('photos',10), upload)
 
 
 
