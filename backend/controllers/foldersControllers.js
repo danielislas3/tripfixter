@@ -24,3 +24,29 @@ exports.getPhotos=(req,res,nex)=>{
   .catch(err=>res.status(500).json({err}))
 } 
 
+exports.createFolder = (req, res) => {
+  // Extraes los valores que te envía el usuario desde la página de creación del folder
+  const {photos, _creator} = req.body
+  // Creas un arreglo con las promesas de la creación de cada foto en mongo
+  const photosPromisse = []
+  // iteras las fotos que recibes del usuario para extraer solo la url y agregar al creador
+  // con esto generas el create que responde con una promesa sin resolver
+  photos.map(photo => photosPromisse.push(Photos.create({img: photo.url, _creator})))
+  // Con PromisseAll resuelves cada promesa dentro del arreglo que generamos por cada foto
+  Promise.all(photosPromisse)
+  .then( imgsArr => {
+    //Una vez resueltas las promesas, mongo te devuelve un arreglo con los elementos creados en Mongo
+    // con ello extraemos solo los ID para referenciarlos al Folder
+    const photosId = imgsArr.map(img => img._id)
+    // Creamos el folder en función de las fotos ya guardadas en mongo
+    Folder.create({
+      photos: photosId,
+      _creator
+    })
+    .then(result => {
+      // Una vez generado el Folder, respondemos al usuario con un mensaje
+      res.status(201).json({message: 'created'})
+    })
+  })
+
+}

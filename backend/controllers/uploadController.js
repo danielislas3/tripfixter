@@ -1,11 +1,4 @@
 const Photos = require('../models/Photo')
 
-exports.upload=(req,res)=>{
-  //guarda en la base de datos solo el id sin la url
+exports.upload = (req,res) => res.status(201).json({files: req.files})
 
-  Photos.create({...req.body, img:req.files.url})//id
-  .then(photos=> {
-    res.status(201).json({...photos})})
-
-
-}

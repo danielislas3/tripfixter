@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const {getOneUser,getUsers,updateUser,deleteUser,createUser} = require('../controllers/usersControllers')
-const {getPhotos,getOneFolder}= require('../controllers/foldersControllers')
+const {getPhotos,getOneFolder, createFolder}= require('../controllers/foldersControllers')
 const uploadCloud= require('../config/cloudinary')
 const {upload}= require('../controllers/uploadController')
 
@@ -22,7 +22,7 @@ router.delete('/users/:id',deleteUser)
 
 //folder de una sesion
 //para un archivo: uploadCloud.single('photos')
-router.post('/photos', uploadCloud.array('photos',10), upload)
+router.post('/photos', uploadCloud.array('photos', 10), upload)
 
 
 
@@ -33,6 +33,7 @@ router.get('/photos',getPhotos)
 
 //todos los folders
 router.get('/folders/:id',getOneFolder)
+router.post('/folders',createFolder)
 
 
 
