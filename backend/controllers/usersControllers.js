@@ -35,8 +35,7 @@ exports.deleteUser=(req,res,nex)=>{
   .then(user=> res.status(200).json({user, msg:'User deleted'}))
   .catch(err=> res.status(500).json({err}))
   }
-
-
+/************** */
 
 
 

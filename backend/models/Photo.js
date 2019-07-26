@@ -3,7 +3,7 @@ const {Schema, model} = require ('mongoose')
 
 const PhotoSchema = new Schema({
 
-  url:String,
+  img:String,
 
   _creator:{
     type:Schema.Types.ObjectId,
@@ -16,3 +16,5 @@ const PhotoSchema = new Schema({
 })
 
 module.exports = model('Photo',PhotoSchema)
+
+

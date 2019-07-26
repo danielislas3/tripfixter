@@ -1,6 +1,8 @@
 const { Schema, model} = require('mongoose')
 
 const FolderSchema = new Schema({
+  title:String,
+
   photos: [{
     type: Schema.Types.ObjectId,
     ref: 'Photo'
@@ -8,6 +10,12 @@ const FolderSchema = new Schema({
 
   date: String,
 
+  
+  _creator:{
+    type:Schema.Types.ObjectId,
+    ref:'User'
+  },
+  
   location: {
     address: {
       type: String,
@@ -15,14 +23,11 @@ const FolderSchema = new Schema({
     },
     coordinates: [Number],
     city:String
-  },
-
-  title:String,
-
-  _creator:{
-    type:Schema.Types.ObjectId,
-    ref:'User'
   }
-  
 })
 module.exports = model('Folder',FolderSchema)
+// {
+//   "title":"Folder uno",
+//   "photos":[""]
+
+// }
