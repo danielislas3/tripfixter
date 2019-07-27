@@ -1,9 +1,19 @@
 const router = require('express').Router();
+const passport = require ('../config/auth/passport')
+const uploadCloud= require('../config/cloudinary')
 const {getOneUser,getUsers,updateUser,deleteUser,createUser} = require('../controllers/usersControllers')
 const {getPhotos,getOneFolder, createFolder}= require('../controllers/foldersControllers')
-const uploadCloud= require('../config/cloudinary')
 const {upload}= require('../controllers/uploadController')
+const {login,logout,signup,profile} = require('../controllers/auth/auth.controller')
+const {verifyToken}= require('../config/auth/jwt')
 
+
+
+///LOGIN
+router.post('/signup',signup)
+router.post('/login',passport.authenticate('local'),login)
+router.get('/logout',logout)
+router.get('/profile',verifyToken,profile)
 
 
 //REST API USUARIO

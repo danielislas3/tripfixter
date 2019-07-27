@@ -36,11 +36,18 @@ const userSchema = new Schema({
   },
   photosUser:[{
     type: Schema.Types.ObjectId,
-    ref:'Folder'}]
+    ref:'Folder'}],
+
+  role:{
+      type:String,
+      enum:['USER','MASTERMIND'],
+      default:'USER'
+  }
 
 },{
   timestamps:true,
   versionKey:false
 })
 
+userSchema.plugin(PLM,{usernameField:'email'})
 module.exports = model('User',userSchema)
