@@ -3,6 +3,7 @@ import AuthService from '../services/auth';
 
 export default function Profile(props) {
   const authService = new AuthService()
+  
   useEffect(() => {
     const loggedUser = localStorage.getItem("loggedUser");
     if (!loggedUser) return props.history.push("/login");

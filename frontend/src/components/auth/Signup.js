@@ -1,8 +1,8 @@
 import React, {useEffect} from 'react'
 import {Link} from 'react-router-dom'
 
-import AuthService from '../services/auth'
-import useForm from '../hooks/useForm'
+import AuthService from '../../services/auth'
+import useForm from '../../hooks/useForm'
 
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
@@ -17,20 +17,13 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import FormControl from '@material-ui/core/FormControl';
 
+import isEmail from 'validator/lib/isEmail';
+import MadeWithLove from '../MadeWithLove';
 
 
 
 
 
-
-function MadeWithLove() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {'Built with ❤️ by Daniel Orio '}
-
-    </Typography>
-  );
-}
 
 const useStyles = makeStyles(theme => ({
   '@global': {
@@ -63,12 +56,13 @@ export default function Signup(props) {
   const authService = new AuthService()
 
   useEffect(()=>{
-    
+      
     const loggedUser = localStorage.getItem('loggedUser')
     if(loggedUser) return props.history.push('/profile')
   },[props.history])
 
   const handleSignup = () => {
+    
     authService
       .signup(form)
       .then(response => {
@@ -164,10 +158,8 @@ export default function Signup(props) {
             color="primary"
             className={classes.submit}
             disabled={(
-              form.name?false:true ,
-              form.lastName?false:true,
-              form.email?false:true,
-              form.password?false:true
+          
+              form.email?(!isEmail(form.email,{ allow_display_name: false, require_display_name: false, allow_utf8_local_part: true, require_tld: true, allow_ip_domain: false, domain_specific_validation: false })):true
               )}
           >
             Sign Up
@@ -183,7 +175,7 @@ export default function Signup(props) {
 
       </div>
       <Box mt={5}>
-        <MadeWithLove />
+        <MadeWithLove/>
       </Box>
     </Container>
   );
