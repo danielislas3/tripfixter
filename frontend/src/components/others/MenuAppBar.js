@@ -9,8 +9,8 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
-import AuthService from '../services/auth';
-import Profile from './Profile'
+import AuthService from '../../services/auth';
+import Profile from '../Profile'
 
 const useStyles = makeStyles(theme => ({
   root: {

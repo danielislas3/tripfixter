@@ -9,7 +9,7 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import MadeWithLove from './MadeWithLove'
+import MadeWithLove from '../MadeWithLove'
 
 
 const useStyles = makeStyles(theme => ({
@@ -124,7 +124,7 @@ export default function Album() {
         </Typography>
         <MadeWithLove />
       </footer>
-      {/* End footer */}
+      
     </React.Fragment>
   );
 }

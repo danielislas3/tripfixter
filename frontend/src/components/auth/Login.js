@@ -60,7 +60,7 @@ export default function Login(props) {
       .then(response => {
         localStorage.setItem("loggedUser", JSON.stringify(response.data.user));
         //me loguea y me amnda a raiz
-        props.history.push("/");
+        props.history.push("/profile");
       })
       .catch(err => {
         console.log(err);
