@@ -1,9 +1,12 @@
 import React, { useEffect } from 'react'
 import AuthService from '../services/auth';
+//import CardLanding from '../components/cards/CardLanding'
+
 
 export default function Profile(props) {
   const authService = new AuthService()
-  
+
+
   useEffect(() => {
     const loggedUser = localStorage.getItem("loggedUser");
     if (!loggedUser) return props.history.push("/login");
@@ -14,7 +17,9 @@ export default function Profile(props) {
       .logout()
       .then(() => {
         localStorage.removeItem('loggedUser')
-        props.history.push('/login')
+        //te desloguea y te redirige a:
+        alert("Fin de sesion")
+        props.history.push('/')
       })
       .catch(err => console.log(err))
   }
@@ -22,7 +27,11 @@ export default function Profile(props) {
 
   return (
     <>
+
       <button onClick={handleLogout}>Logout</button>
+ 
+
     </>
   )
+
 }

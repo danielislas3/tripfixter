@@ -102,6 +102,7 @@ class DesktopContainer extends Component {
                     <Menu.Item   active >
                       <Image src="https://res.cloudinary.com/ironhack-daniel/image/upload/v1564428373/tripfixter/logo_nmu1e4.png" size="small"/>
                     </Menu.Item >
+                    
                   </Link>
                  
                 <Menu.Item position='right'>
