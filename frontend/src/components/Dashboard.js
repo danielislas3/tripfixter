@@ -5,7 +5,7 @@ import Navbar from './Navbar';
 const Dashboard = (props) => (
   <div>
 
-   <Navbar/>
+   <Navbar {...props}/>
 
 
       {/* CONTENEDOR */}

@@ -17,7 +17,7 @@ const userSchema = new Schema({
   },
   photo: {
     type: String,
-    default: 'https://d1nhio0ox7pgb.cloudfronthttps://www.searchpng.com/wp-content/uploads/2019/02/Deafult-Profile-Pitcher.png.net/_img/o_collection_png/green_dark_grey/256x256/plain/user.png'
+    default: 'https://banner2.kisspng.com/20180401/dbq/kisspng-user-profile-computer-icons-profile-5ac09245049c32.0935523415225697970189.jpg'
   },
   description:{
     type:String,
@@ -32,7 +32,11 @@ const userSchema = new Schema({
       default: 'Point'
     },
     coordinates: [Number],
-    city:String
+    city:{
+      type:String,
+      require:true,
+      default:"Ciudad"
+    }
   },
   photosUser:[{
     type: Schema.Types.ObjectId,

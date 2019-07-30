@@ -25,7 +25,21 @@ exports.updateUser=(req,res,next)=>{
   const {id}= req.params
   User.findByIdAndUpdate(id,{...req.body},{new:true})
   .then(user=> res.status(200).json({user}))
-  .catch(err=> res.status(500).json({err}))
+  .catch(err=> res.status(err.status || 500).json({
+    message: err.message,
+    error: err
+  }))
+}
+exports.updateImageUser=(req,res,next)=>{
+  const {id}= req.params
+  const {img} = req.body
+
+  User.findByIdAndUpdate(id,img,{new:true})
+  .then(user=> res.status(200).json(user))
+  .catch(err=> res.status(err.status || 500).json({
+    message: err.message,
+    error: err
+  }))
 }
 
   // D

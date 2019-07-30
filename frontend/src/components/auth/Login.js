@@ -49,6 +49,7 @@ export default function Login(props) {
 
   const classes = useStyles();
   const [form, handleInput] = useForm();
+  
   const authService = new AuthService();
   useEffect(() => {
     const loggedUser = localStorage.getItem("loggedUser");
@@ -65,6 +66,7 @@ export default function Login(props) {
       })
       .catch(err => {
         console.log(err);
+        alert('El usuario no existe')
       });
   };
 

@@ -1,9 +1,9 @@
 const router = require('express').Router();
 const passport = require ('../config/auth/passport')
 const uploadCloud= require('../config/cloudinary')
-const {getOneUser,getUsers,updateUser,deleteUser,createUser} = require('../controllers/usersControllers')
+const {getOneUser,getUsers,updateUser,deleteUser,createUser,updateImageUser} = require('../controllers/usersControllers')
 const {getPhotos,getOneFolder, createFolder}= require('../controllers/foldersControllers')
-const {upload}= require('../controllers/uploadController')
+const {upload,uploadOne}= require('../controllers/uploadController')
 const {login,logout,signup,profile} = require('../controllers/auth/auth.controller')
 const {verifyToken}= require('../config/auth/jwt')
 
@@ -26,11 +26,13 @@ router.get('/users/:id',getOneUser)
 router.post('/users',createUser)
 //UPDATE
 router.patch('/users/:id',updateUser)
+//router.post('/upload', uploadCloud.single('photo'), upload)
 //DELETEr
 router.delete('/users/:id',deleteUser)
 /****************FOTOS************ */
 
 //folder de una sesion
+
 //para un archivo: uploadCloud.single('photos')
 router.post('/photos', uploadCloud.array('photos', 10), upload)
 

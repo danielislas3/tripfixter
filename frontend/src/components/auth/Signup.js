@@ -68,6 +68,7 @@ export default function Signup(props) {
       .then(response => {
         // aqui debería de ir una notificación o un SWAL o un TOASTR
         console.log(response)
+        alert('Usuario creado, por favor inicia sesión')
         props.history.push('/login')
       })
       .catch(err => {

@@ -19,6 +19,9 @@ class AuthService{
     logout(){
       return this.service.get('/logout')
     }
+    updateUser( data,userID) {
+      return this.service.patch(`/users/${userID}`, data)
+    }
 }
 
 export default AuthService
