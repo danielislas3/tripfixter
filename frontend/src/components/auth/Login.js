@@ -46,12 +46,13 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function Login(props) {
+
   const classes = useStyles();
   const [form, handleInput] = useForm();
   const authService = new AuthService();
   useEffect(() => {
     const loggedUser = localStorage.getItem("loggedUser");
-    if (loggedUser) return props.history.push("/profile");
+    if (loggedUser) return props.history.push("/dashboard");
   }, [props.history]);
 
   const handleLogin = () => {
@@ -60,7 +61,7 @@ export default function Login(props) {
       .then(response => {
         localStorage.setItem("loggedUser", JSON.stringify(response.data.user));
         //me loguea y me amnda a raiz
-        props.history.push("/profile");
+        props.history.push("/dashboard");
       })
       .catch(err => {
         console.log(err);
@@ -125,6 +126,9 @@ export default function Login(props) {
             </Grid>
           </Grid>
         </form>
+        <Link to="/">
+        <Button >Back</Button>
+        </Link>
       </div>
       <Box mt={5}>
         <MadeWithLove />

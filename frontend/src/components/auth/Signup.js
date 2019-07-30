@@ -58,7 +58,7 @@ export default function Signup(props) {
   useEffect(()=>{
       
     const loggedUser = localStorage.getItem('loggedUser')
-    if(loggedUser) return props.history.push('/profile')
+    if(loggedUser) return props.history.push('/dashboard')
   },[props.history])
 
   const handleSignup = () => {
@@ -172,7 +172,9 @@ export default function Signup(props) {
             </Grid>
           </Grid>
           </FormControl>
-
+          <Link to="/">
+        <Button >Back</Button>
+        </Link>
       </div>
       <Box mt={5}>
         <MadeWithLove/>
