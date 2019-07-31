@@ -1,6 +1,6 @@
 import axios from 'axios'
 //el link del servidor
-const baseURL = 'http://localhost:4000/api'
+const baseURL = 'https://tripfixer.herokuapp.com/api'
 
 class AuthService{
 

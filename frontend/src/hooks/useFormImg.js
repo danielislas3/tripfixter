@@ -18,7 +18,7 @@ const handleInput=(e)=>{
     //aquui se manda como lo recibe las rutas del backend
     file.append('photo',e.target.files[0])
   //aqui subimos la imagen en cuanto selecciona el usuario la imagen y nos regresa en img el url de la imagen en la nuve
-   const{data:{img}}= await axios.post('http://localhost:4000/upload',file)
+   const{data:{img}}= await axios.post('https://tripfixer.herokuapp.com/upload',file)
   setForm(prevState=>({
     ...prevState,
     img

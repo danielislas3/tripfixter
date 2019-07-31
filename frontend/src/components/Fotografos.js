@@ -9,7 +9,7 @@ import Axios from 'axios'
   const [user, setUser] = useState([])
 
   useEffect(() => {
-    Axios.get('http://localhost:4000/api/users')
+    Axios.get('https://tripfixer.herokuapp.com/api/users')
       .then(({ data }) => {
         setUser(prevState => {
           return [...prevState, ...data.users]

@@ -18,7 +18,7 @@ const getWidth = () => {
  * such things.
  */
 const HomepageHeading = ({ mobile }) => (
-  <Container fluid style={{  backgroundImage: "url('https://res.cloudinary.com/ironhack-daniel/image/upload/v1564428368/tripfixter/Screen_Shot_2019-07-26_at_3.09.50_PM_td3bbv.png')",
+  <Container fluid style={{  backgroundImage: "url('https://res.cloudinary.com/ironhack-daniel/image/upload/v1564602949/tripfixter/Screen_Shot_2019-07-26_at_3.09.50_PM_2_k0wxlf.jpg')",
   width: '100vw', height: '100vh',
   backgroundRepeat:'no-repeat',
   backgroundSize: 'cover',

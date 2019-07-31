@@ -1,5 +1,5 @@
 import axios from 'axios'
-const baseURL = 'http://localhost:4000/api'
+const baseURL = 'https://tripfixer.herokuapp.com/api'
  
 class userService{
   constructor() {

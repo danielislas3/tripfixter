@@ -4,7 +4,7 @@ const uploadCloud= require('../config/cloudinary')
 const {getOneUser,getUsers,updateUser,deleteUser,createUser,updateImageUser} = require('../controllers/usersControllers')
 const {getPhotos,getOneFolder, createFolder}= require('../controllers/foldersControllers')
 const {upload,uploadOne}= require('../controllers/uploadController')
-const {createRequest,getRequest,getOneRequest} = require('../controllers/requestControllers')
+const {createRequest,getRequest,getOneRequest,updateRequest} = require('../controllers/requestControllers')
 const {login,logout,signup,profile} = require('../controllers/auth/auth.controller')
 const {verifyToken}= require('../config/auth/jwt')
 
@@ -33,6 +33,7 @@ router.delete('/users/:id',deleteUser)
 /****************REQUEST************ */
 router.post('/request',createRequest)
 router.get('/request/:id',getOneRequest)
+router.patch('/request/:id',updateRequest)
 router.get('/request',getRequest)
 /****************FOTOS************ */
 

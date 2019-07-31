@@ -76,3 +76,22 @@
   "place": "...",
   "date": "..."
 }
+
+{
+  "user":"5d408f7a66dd7424fe4fcf6b",
+  "userPhoto":"https://banner2.kisspng.com/20180401/dbq/kisspng-user-profile-computer-icons-profile-5ac09245049c32.0935523415225697970189.jpg",
+  "msg":"dsadsadasdasd",
+  "date":"07/31/2019"
+
+}
+
+{
+  "user":"5d408f7a66dd7424fe4fcf6b",
+  "userPhoto":"5d40c1ba129f06001736dd7c",
+  "msg":"Mariana",
+  "location":{
+  	"coordinates": [23,23424],
+    "city":"asdasd"
+  },
+  "date":"asdasd"
+}

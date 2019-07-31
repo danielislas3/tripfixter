@@ -10,7 +10,7 @@ export default function ProfileFotografo(props) {
   const [user, setUser] = useState([])
 
   useEffect(() => {
-    Axios.get(`http://localhost:4000/api/users/${props.match.params.id}`)
+    Axios.get(`https://tripfixer.herokuapp.com/api/users/${props.match.params.id}`)
       .then(({ data }) => {
         setUser(prevState=>{
           return [data.users]
@@ -39,6 +39,7 @@ export default function ProfileFotografo(props) {
             <br/>
             
             <RequestConfirm {...requestData}/>
+            
 
           </Header>
 
