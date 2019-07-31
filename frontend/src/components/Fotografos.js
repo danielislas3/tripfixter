@@ -1,5 +1,5 @@
 import React,{useEffect,useState} from 'react'
-import {Container,Divider,Image,List,Segment,Grid} from 'semantic-ui-react'
+import {Container,Divider,Image,List,Segment,Grid,Header,Icon} from 'semantic-ui-react'
 import Navbar from './Navbar';
 import CardsDashboard from './cards/CardsDashboard';
 import Axios from 'axios'
@@ -22,7 +22,12 @@ import Axios from 'axios'
  return( <>
 
    <Navbar {...props}/>
-
+   <br/>
+  <br/>
+  <Header as='h2' icon textAlign='center'>
+      <Icon name='users' circular />
+      <Header.Content>Fotografos</Header.Content>
+    </Header>
 
       {/* CONTENEDOR */}
 
