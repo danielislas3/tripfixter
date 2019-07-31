@@ -1,26 +1,28 @@
 import React from 'react'
 import {Container,Divider,Header,Image,List,Segment} from 'semantic-ui-react'
 import Navbar from './Navbar';
+import CardsDashboard from './cards/CardsDashboard';
+import { Grid } from '@material-ui/core';
 
 const Dashboard = (props) => (
-  <div>
+  < >
 
    <Navbar {...props}/>
 
 
       {/* CONTENEDOR */}
-    <Container text style={{ marginTop: '7em' }}>
-      <Header as='h1'>Dashboard</Header>
-      <p>aqui van a ir los fotografos</p>
-      
-  
 
-      
-
-     
-    </Container>
+    <Segment  vertical style={{ margin: '5em 0em 0em', padding: '5em 0em' }}>
+      <Container textAlign='center'>
     
-  {/* FOOTER */}
+      <List horizontal  relaxed  size='small'>
+          <List.Item >
+            <CardsDashboard/>
+          </List.Item>
+          </List>
+      </Container>
+    </Segment>
+
 
     <Segment inverted vertical style={{ margin: '5em 0em 0em', padding: '5em 0em' }}>
       <Container textAlign='center'>
@@ -45,7 +47,7 @@ const Dashboard = (props) => (
       </Container>
     </Segment>
 
-  </div>
+  </>
 )
 
 export default Dashboard

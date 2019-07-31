@@ -13,7 +13,7 @@ import Lugares from './components/Lugares';
 export default function Router() {
   return (
     <BrowserRouter>
-
+    
     <Switch>
       
       <Route exact path="/" component={HomeAppBar}/>
@@ -23,7 +23,7 @@ export default function Router() {
       <Route exact path="/dashboard" component={Dashboard}/>
       <Route exact path="/profile" component={Profile}/>
       <Route exact path="/lugares" component={Lugares}/>
-
+    
     </Switch>
     </BrowserRouter>
   )
