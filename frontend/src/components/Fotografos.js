@@ -1,11 +1,10 @@
 import React,{useEffect,useState} from 'react'
-import {Link} from 'react-router-dom'
-import {Container,Divider,Image,List,Segment,Card,Icon,Grid} from 'semantic-ui-react'
+import {Container,Divider,Image,List,Segment,Grid} from 'semantic-ui-react'
 import Navbar from './Navbar';
 import CardsDashboard from './cards/CardsDashboard';
 import Axios from 'axios'
 
- export default function Dashboard  (props) {
+ export default function Fotografos  (props) {
 
   const [user, setUser] = useState([])
 
@@ -28,16 +27,16 @@ import Axios from 'axios'
       {/* CONTENEDOR */}
 
    
-      <Container textAlign='center'>
-      <Grid celled='internally' columns='equal' stackable>
-        <Grid.Row columns={3} textAlign='center'>
+     
+      <Grid  celled='internally' columns='equal' stackable>
+        <Grid.Row centered columns={3} textAlign='center'>
           
              <CardsDashboard user={user}/>
 
         </Grid.Row>
       </Grid>
       
-      </Container>
+
 
   
     <Segment inverted vertical style={{ margin: '5em 0em 0em', padding: '5em 0em' }}>

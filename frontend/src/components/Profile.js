@@ -62,6 +62,7 @@ const Profile = (props) => {
 
       <Container text style={{ marginTop: '7em' }}>
       <Header as='h1'>Esto es el perfil</Header>
+      <Button to="/fotos">Mis fotos</Button>
         {/* <Image avatar={true} src={loggedUser.photo} size='small' circular /> */}
 
       <Card

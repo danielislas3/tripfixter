@@ -40,10 +40,10 @@ const Navbar = (props) => {
         <Dropdown item simple text='Dropdown'>
           <Dropdown.Menu>
             
-            <Dropdown.Item><Link to="/lugares">Lugares   </Link></Dropdown.Item>
+            <Dropdown.Item><Link to="/lugares">Lugares  </Link></Dropdown.Item>
          
             <Dropdown.Divider />
-            <Dropdown.Item>Fotografos</Dropdown.Item>
+            <Dropdown.Item><Link to="/fotografos">Fotografos  </Link></Dropdown.Item>
             <Dropdown.Header>Header Item</Dropdown.Header>
             <Dropdown.Item>
               <i className='dropdown icon' />

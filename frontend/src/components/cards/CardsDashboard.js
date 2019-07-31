@@ -12,13 +12,12 @@ const extra = (
 
 
 export default function CardsDashboard ({user}) {
-  //console.log(user)
   return(
    <>
     
     {  user.map((user,i)=>{
-    return (  <Grid.Column style={{ paddingBottom: '5em', paddingTop: '5em' }}>
-      <Card key={i}
+    return (  <Grid.Column mobile={16} tablet={8} computer={5}key={i} style={{ paddingBottom: '5em', paddingTop: '5em' }}>
+      <Card 
     
       image={user.photo} 
       header={user.name+" "+user.lastName}
