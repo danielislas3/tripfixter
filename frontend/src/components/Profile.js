@@ -2,7 +2,7 @@ import React,{useState} from 'react'
 import {Container,Header,Button , Modal,Form} from 'semantic-ui-react'
 import { Card, Icon,Image } from 'semantic-ui-react'
 import Navbar from './Navbar';
-import useForm from "../hooks/useFormImg";
+import useForm from "../hooks/useForm";
 
 import AuthService from '../services/auth'
 //import userService from '../services/user'
@@ -20,6 +20,7 @@ const Profile = (props) => {
 
 
   const authService = new AuthService();	
+
   const selectPhoto = async e => {
 		try {
 			const photo = new FormData();
@@ -45,12 +46,14 @@ const Profile = (props) => {
 			.then(response => {
                 console.log("respuesta del then"+{response});
                 localStorage.setItem("loggedUser", JSON.stringify(response.data.user));
-				props.history.push("/profile");
+        props.history.push("/profile");
+        
 			})
 			.catch(err => {
 				console.log(err);
 			});
-	};
+  };
+
   
 
   return (
@@ -90,10 +93,11 @@ const Profile = (props) => {
           <Form.TextArea label='Description'name="description" defaultValue={loggedUser.description}  onChange={handleInput} placeholder='Tell us more about you...'  />
         
 
-          <Form.Button onClick={handleEdit}>Update</Form.Button >
+          <Form.Button onClick={handleEdit} >Update</Form.Button >
 
        
        </Form>
+      
        </Modal.Description>
 
      

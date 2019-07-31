@@ -2,20 +2,20 @@ import React from 'react'
 import {Container,Divider,Header,Image,List,Segment} from 'semantic-ui-react'
 import Navbar from './Navbar';
 
-const Dashboard = (props) => (
-  <div>
+const Lugares = (props) => {
+  return (
+    <div>
 
    <Navbar {...props}/>
 
 
       {/* CONTENEDOR */}
     <Container text style={{ marginTop: '7em' }}>
-      <Header as='h1'>Dashboard</Header>
-      <p>aqui van a ir los fotografos</p>
-      
-  
-
-      
+      <Header as='h1'>Lugares</Header>
+      <p>asdfasdfasdlknf.sdnflasdnfñlkns-dl-knasdf</p>
+      <p>
+       asdasdfasdfds
+      </p>
 
      
     </Container>
@@ -24,7 +24,6 @@ const Dashboard = (props) => (
 
     <Segment inverted vertical style={{ margin: '5em 0em 0em', padding: '5em 0em' }}>
       <Container textAlign='center'>
-    
 
         <Divider inverted section />
         <Image centered size='medium' src='/logo.png' />
@@ -46,6 +45,7 @@ const Dashboard = (props) => (
     </Segment>
 
   </div>
-)
+  )
+}
 
-export default Dashboard
+export default Lugares
