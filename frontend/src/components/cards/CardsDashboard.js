@@ -1,5 +1,7 @@
 import React from 'react'
-import { Card, Icon } from 'semantic-ui-react'
+import { Card, Icon,Grid } from 'semantic-ui-react'
+
+
 
 const extra = (
   <>
@@ -8,14 +10,29 @@ const extra = (
   </>
 )
 
-const CardsDashboard = (props) => (
-  <Card
-    image='/images/avatar/large/elliot.jpg'
-    header='Elliot Baker'
-    meta='Friend'
-    description='Elliot is a sound engineer living in Nashville who enjoys playing guitar and hanging with his cat.'
-    extra={extra}
-  />
-)
 
-export default CardsDashboard
+export default function CardsDashboard ({user}) {
+  //console.log(user)
+  return(
+   <>
+    
+    {  user.map((user,i)=>{
+    return (  <Grid.Column style={{ paddingBottom: '5em', paddingTop: '5em' }}>
+      <Card key={i}
+    
+      image={user.photo} 
+      header={user.name+" "+user.lastName}
+      meta={user.city}
+      description='Elliot is a sound engineer living in Nashville who enjoys playing guitar and hanging with his cat.'
+      extra={extra}
+    /></Grid.Column>)
+  })}
+
+  </>
+  )
+
+
+  
+}
+
+ 

@@ -1,29 +1,45 @@
-import React from 'react'
-import {Container,Divider,Header,Image,List,Segment} from 'semantic-ui-react'
+import React,{useEffect,useState} from 'react'
+import {Link} from 'react-router-dom'
+import {Container,Divider,Image,List,Segment,Card,Icon,Grid} from 'semantic-ui-react'
 import Navbar from './Navbar';
 import CardsDashboard from './cards/CardsDashboard';
-import { Grid } from '@material-ui/core';
+import Axios from 'axios'
 
-const Dashboard = (props) => (
-  < >
+ export default function Dashboard  (props) {
+
+  const [user, setUser] = useState([])
+
+  useEffect(() => {
+    Axios.get('http://localhost:4000/api/users')
+      .then(({ data }) => {
+        setUser(prevState => {
+          return [...prevState, ...data.users]
+        })
+      })
+      .catch(err => console.log(err))
+  }, [])
+  
+  
+ return( <>
 
    <Navbar {...props}/>
 
 
       {/* CONTENEDOR */}
 
-    <Segment  vertical style={{ margin: '5em 0em 0em', padding: '5em 0em' }}>
+   
       <Container textAlign='center'>
-    
-      <List horizontal  relaxed  size='small'>
-          <List.Item >
-            <CardsDashboard/>
-          </List.Item>
-          </List>
+      <Grid celled='internally' columns='equal' stackable>
+        <Grid.Row columns={3} textAlign='center'>
+          
+             <CardsDashboard user={user}/>
+
+        </Grid.Row>
+      </Grid>
+      
       </Container>
-    </Segment>
 
-
+  
     <Segment inverted vertical style={{ margin: '5em 0em 0em', padding: '5em 0em' }}>
       <Container textAlign='center'>
     
@@ -47,7 +63,6 @@ const Dashboard = (props) => (
       </Container>
     </Segment>
 
-  </>
-)
+  </>)
+ }
 
-export default Dashboard
