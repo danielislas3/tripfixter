@@ -7,6 +7,7 @@ import HomeAppBar from './components/HomepageLayout'
 import Profile from './components/Profile';
 import Lugares from './components/Lugares';
 import Fotografos from './components/Fotografos';
+import ProfileFotografo from './components/ProfileFotografo';
 
 
 
@@ -22,6 +23,7 @@ export default function Router() {
       <Route exact path="/login" component={Login}/>
       <Route exact path="/signup" component={Signup}/>
       <Route exact path="/fotografos" component={Fotografos}/>
+      <Route exact path="/fotografos/:id" component={ProfileFotografo}/>
       <Route exact path="/profile" component={Profile}/>
       <Route exact path="/dashboard" component={Dashboard}/>
       <Route exact path="/lugares" component={Lugares}/>
