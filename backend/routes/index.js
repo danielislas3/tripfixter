@@ -4,6 +4,7 @@ const uploadCloud= require('../config/cloudinary')
 const {getOneUser,getUsers,updateUser,deleteUser,createUser,updateImageUser} = require('../controllers/usersControllers')
 const {getPhotos,getOneFolder, createFolder}= require('../controllers/foldersControllers')
 const {upload,uploadOne}= require('../controllers/uploadController')
+const {createRequest} = require('../controllers/requestControllers')
 const {login,logout,signup,profile} = require('../controllers/auth/auth.controller')
 const {verifyToken}= require('../config/auth/jwt')
 
@@ -29,6 +30,8 @@ router.patch('/users/:id',updateUser)
 //router.post('/upload', uploadCloud.single('photo'), upload)
 //DELETEr
 router.delete('/users/:id',deleteUser)
+/****************REQUEST************ */
+router.post('/request',createRequest)
 /****************FOTOS************ */
 
 //folder de una sesion
