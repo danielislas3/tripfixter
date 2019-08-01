@@ -1,8 +1,16 @@
 import React,{useState,useEffect} from 'react'
 import Navbar from './Navbar';
-import { Header, Image ,Loader,Dimmer,Grid,Segment} from 'semantic-ui-react'
+import { Header ,Loader,Dimmer,Grid,Segment,Card,Divider,Button} from 'semantic-ui-react'
+import CardFotosTomadas from './cards/CardsFotosTomadas'
 import Axios from 'axios'
 import RequestConfirm from './RequestConfirm';
+import ReactMapboxGl, { Layer, Feature } from "react-mapbox-gl";
+const Map = ReactMapboxGl({
+  accessToken: "pk.eyJ1IjoiZGFuaWVsaXNsYXMzIiwiYSI6ImNqeG0yY2RhYTAwbXgzb25kaHRkNG1uY28ifQ.Q9LewDAeIYbUj-b7AXfdBw"
+});
+
+
+
 
 
 export default function ProfileFotografo(props) {
@@ -29,40 +37,71 @@ export default function ProfileFotografo(props) {
         <br/>
         <br/>
 
-    <Segment>
-       <Grid.Column>
-        <Grid columns={2} relaxed='very'>
+        <Segment >
+          <Grid columns={2} stackable textAlign='center'>
+          <Divider vertical></Divider>
+          <Grid.Row verticalAlign='middle'>
+            <Grid.Column>
+          <Header >
+           
+           <div>
+
+          
+    
+           <Map style={`mapbox://styles/mapbox/streets-v9`} containerStyle={{
+                    height: "40vh",
+                    width: "40vw"
+                  }}>
+                    <Layer
+                      type="symbol"
+                      id="marker"
+                      layout={{ "icon-image": "marker-15" }}>
+                      <Feature coordinates={[ -99.1566862,19.4204502]}/>
+                    </Layer>
+                </Map>
+
+           </div>
+           
+          </Header>
+        </Grid.Column>
+
+        <Grid.Column>
+        <br/>
           <br/>
-          <br/>
-          <Header as='h2'>
-            <Image circular src={fotografo.photo} /> {fotografo.name}
+          <Header as='h3'>
+          <Card
+                image={fotografo.photo}
+                header={fotografo.name}
+                meta={fotografo.lastName}
+                description={fotografo.description}
+            />
+            
             <br/>
-            
-            <RequestConfirm {...requestData}/>
-            
+            <br/>
 
           </Header>
-
-        </Grid>
+          <Button primary>Create</Button>
         </Grid.Column>
-           
+      </Grid.Row>
+    </Grid>
   </Segment>
      <Segment>
       <Grid  celled='internally' columns='equal' stackable>
-        <Grid.Row centered columns={3} textAlign='center'>
+            <RequestConfirm {...requestData}/>
+        
           {/* AQUI VAN LAS FOTOS REFERENCIADAS AL FOLDER */}
+          
+          <Card.Group itemsPerRow={4}>
+   
 
-        {/* {fotografo.photosUser.map(foto=>{
-          console.log(foto)
-          return(
-            <Grid.Column mobile={16} tablet={8} computer={5} style={{ paddingBottom: '8em', paddingTop: '7em' }}>
-            <Image src={foto}/>
-           </Grid.Column>
-          )
-        })} */}
+    <CardFotosTomadas {...props}/>
+
+
+  </Card.Group>
+
         
 
-         </Grid.Row>
+        
       </Grid>
      </Segment>
      

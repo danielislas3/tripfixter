@@ -49,7 +49,7 @@ class RequestConfirm extends Component {
 
         <Button positive  onClick={this.open}>REQUEST</Button>
         
-        <p>{JSON.stringify(this.state)}</p>
+       
         <Confirm content={
           <Form>
           <Form.Field>

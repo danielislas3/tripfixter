@@ -2,7 +2,7 @@ const router = require('express').Router();
 const passport = require ('../config/auth/passport')
 const uploadCloud= require('../config/cloudinary')
 const {getOneUser,getUsers,updateUser,deleteUser,createUser,updateImageUser} = require('../controllers/usersControllers')
-const {getPhotos,getOneFolder,createPhotos,createFolder}= require('../controllers/foldersControllers')
+const {getPhotos,getAllPhotos,getOneFolder,createPhotos,createFolder}= require('../controllers/foldersControllers')
 const {upload,uploadOne}= require('../controllers/uploadController')
 const {createRequest,getRequest,getOneRequest,updateRequest,getOneByUser,getAllbyUserPhotographer,getOneByUserPhotographer,getAllByUser} = require('../controllers/requestControllers')
 const {login,logout,signup,profile} = require('../controllers/auth/auth.controller')
@@ -53,12 +53,10 @@ router.get('/request',getRequest)
 router.post('/photosCloud', uploadCloud.array('photos', 4), upload)
 router.post('/upload', uploadCloud.single('photo'), uploadOne)
 
-router.post('/photos',createPhotos)
-
-
 
 //imagenes
-router.get('/photos',getPhotos)
+router.get('/photos/:id',getPhotos)
+router.get('/photosAll/:id',getAllPhotos)
 //router.post('/photos',createPhotos)
 
 

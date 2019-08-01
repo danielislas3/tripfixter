@@ -8,8 +8,10 @@ import AuthService from '../services/auth'
 //import userService from '../services/user'
 import Axios from 'axios';
 import DropRequest from './DropRequest';
+const base_url='http://localhost:4000/api'
 
 
+//obtener mis folders como fotografo
 
 
 const Profile = (props) => {
@@ -17,11 +19,14 @@ const Profile = (props) => {
   const usuarioPar = JSON.parse(rawUser)
   const [loggedUser] = useState(usuarioPar) 
   const [form, handleInput] = useForm();
-
+  
 
   const authService = new AuthService();
 
-
+  Axios.get(`${base_url}/folders/${loggedUser}`)
+  .then(({data}) => {
+    
+  }).catch(console.log)
 
   const selectPhoto = async e => {
     
@@ -29,9 +34,9 @@ const Profile = (props) => {
 			const photo = new FormData();
 			photo.append("photo", e.target.files[0]);
       
-      const cloudinaryPhoto = await Axios.post(`http://localhost:4000/api/upload`, photo)
+      const cloudinaryPhoto = await Axios.post(`${base_url}/upload`, photo)
      
-      Axios.patch(`http://localhost:4000/api/users/${loggedUser._id}`,{photo:cloudinaryPhoto.data.photo})
+      Axios.patch(`${base_url}/users/${loggedUser._id}`,{photo:cloudinaryPhoto.data.photo})
       .then(res=>{
 
       })
@@ -43,24 +48,7 @@ const Profile = (props) => {
 			console.log(error);
 		}
   }
-  // const selectPhotos = async e => {
-	// 	try {
-	// 		const photo = new FormData();
-	// 		photo.append("photo", e.target.files[0]);
-  //     const response = await userService.updateUser(photo);
-  //     console.log(photo)
-  //     Axios.post(`http://localhost:4000/api/users/${loggedUser._id}`, {photo})
-  //     console.log(loggedUser._id)
-	// 		setLoggedUser(
-	// 			{...loggedUser,
-	// 			photo: response.data.user.image}
-	// 		)
-	// 		localStorage.setItem("loggedUser", JSON.stringify(response.data.user));
 
-	// 	} catch (error) {
-	// 		console.log(error);
-	// 	}
-  //}
   const handleEdit = () => {
     console.log("form: "+{form});
 		authService
@@ -85,7 +73,10 @@ const Profile = (props) => {
       <Navbar {...props} />
 
       <Container text style={{ marginTop: '7em' }}>
-      <Header as='h1'>Esto es el perfil</Header>
+      <Header as='h1'>
+      <Image circular src={loggedUser.photo} /> My perfil 
+      </Header>
+      
       <Link  to="/subirFotos">
       </Link>
       <Button>Mis fotos</Button>

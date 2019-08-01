@@ -8,7 +8,6 @@ exports.getUsers=(req,res,nex)=>{
 } 
 //R
 exports.getOneUser=(req,res,nex)=>{
-
   const {id}=req.params
   User.findById(id)
   .then(users=>res.status(200).json({users}))
@@ -22,7 +21,7 @@ exports.createUser=(req,res,next)=>{
 }
 //U
 exports.updateUser=(req,res,next)=>{
-  const {id}= req.params
+  const {id,photosUser}= req.params
   User.findByIdAndUpdate(id,{...req.body},{new:true})
   .then(user=> res.status(200).json({user}))
   .catch(err=> res.status(err.status || 500).json({
