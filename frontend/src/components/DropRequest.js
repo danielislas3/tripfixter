@@ -7,11 +7,8 @@ const base_url='http://localhost:4000/api'
 
 export default function DropRequest (props) {
   const userLogueado = JSON.parse(localStorage.getItem("loggedUser"))
-
-  const rawUser = localStorage.getItem("loggedUser");
-  const usuarioPar = JSON.parse(rawUser)
-  const [loggedUser] = useState(usuarioPar) 
   const [request, setRequest] = useState([])
+  const [imagenes, setImagenes] = useState([])
   const [usuarioDrop, setUsuarioDrop] = useState([])
   
   const selectPhotos = async e => {
@@ -21,18 +18,37 @@ export default function DropRequest (props) {
       for (let i=0; i<=e.target.files.length;i++){
         photos.append("photos", e.target.files[i]);
       }
-      const cloudinaryPhoto = await Axios.post(`${base_url}/photos`, photos)
- 
-     
-      // Axios.patch(`${base_url}/users/${loggedUser._id}`,{photo:cloudinaryPhoto.data.photo})
+      const cloudinaryPhoto = await Axios.post(`${base_url}/photosCloud`, photos)
+      //aqu saco el url y lo meto a un arreglo
+      const arrFotos=cloudinaryPhoto.data.photos.map((urlImg,i)=>{
+        return(urlImg.secure_url)
+      })
+     //voy a crear los modelos de fotos
+     arrFotos.forEach((img,i )=> {
+      const fotografias={
+        img:img,
+        _creator:usuarioDrop[0]
+      }
+      Axios.post(`${base_url}/photos`,fotografias)
+      .then(({ data }) => {
+        console.log(data)
+        setImagenes(prevState => {
+          return [...prevState, data._id]
+        })
+      })
+      .catch(err => console.log(err))
+
+     });
+    //  const fotografias={
+    //    img:arrFotos,
+    //    _creator:usuarioDrop[0]
+    //  }
+      
       // .then(res=>{
 
       // })
       // .catch(console.log)
-      const arrFotos=cloudinaryPhoto.data.photos.map((urlImg,i)=>{
-        return(urlImg.secure_url)
-      })
-      console.log(arrFotos)
+
       //console.log(cloudinaryPhoto.data.photos[0].secure_url)
 
 
@@ -61,7 +77,6 @@ export default function DropRequest (props) {
 const crearFolder =(e,request)=>{
   
   setUsuarioDrop([request.value])
-  console.log(usuarioDrop)
 
  }
 
@@ -97,7 +112,6 @@ const crearFolder =(e,request)=>{
       <Input label='SUBIR FOTOS' type="file" name="photos" multiple onChange={selectPhotos} />
  </Form>
 
-    {console.log(usuarioDrop)}
     
 
     </>:<p>SELECCIONA UN FOTOGRAFO</p>

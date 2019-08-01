@@ -26,7 +26,6 @@ exports.getOneByUser=(req,res,nex)=>{
   const {user}=req.params
   Solicitud.findOne({user})
   .then(request=>{
-    console.log(request)
     res.status(200).json({request})})
   .catch(err=>res.status(500).json({err}))
 } 
@@ -39,7 +38,6 @@ exports.getAllByUser=(req,res,nex)=>{
     }
   })
   .then(request=>{
-    console.log(request)
     res.status(200).json({request})})
   .catch(err=>res.status(500).json({err}))
 } 

@@ -23,7 +23,12 @@ exports.getPhotos=(req,res,nex)=>{
   .then(photos=>res.status(200).json({photos}))
   .catch(err=>res.status(500).json({err}))
 } 
-
+exports.createPhotos=(req,res,nex)=>{
+    Photos.create({...req.body})
+    .then(photos=>res.status(201).json({photos}))
+    .catch(err=>res.status(500).json({err}))
+ 
+}
 exports.createFolder = (req, res) => {
   // Extraes los valores que te envía el usuario desde la página de creación del folder
   const {photos, _creator} = req.body
