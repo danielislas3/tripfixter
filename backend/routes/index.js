@@ -4,7 +4,7 @@ const uploadCloud= require('../config/cloudinary')
 const {getOneUser,getUsers,updateUser,deleteUser,createUser,updateImageUser} = require('../controllers/usersControllers')
 const {getPhotos,getOneFolder, createFolder}= require('../controllers/foldersControllers')
 const {upload,uploadOne}= require('../controllers/uploadController')
-const {createRequest,getRequest,getOneRequest,updateRequest} = require('../controllers/requestControllers')
+const {createRequest,getRequest,getOneRequest,updateRequest,getOneByUser,getAllbyUserPhotographer,getOneByUserPhotographer,getAllByUser} = require('../controllers/requestControllers')
 const {login,logout,signup,profile} = require('../controllers/auth/auth.controller')
 const {verifyToken}= require('../config/auth/jwt')
 
@@ -32,7 +32,21 @@ router.post('/upload', uploadCloud.single('photo'), uploadOne)
 router.delete('/users/:id',deleteUser)
 /****************REQUEST************ */
 router.post('/request',createRequest)
+
+//todos los request que el usuario ha creado
+router.get('/request/userCreados/:user',getAllByUser)
+// request que 
+//router.get('/request/user/:user',getOneByUser)
+/// request que el fotografo tiene
+
+router.get('/request/userP/:userPhoto',getOneByUserPhotographer)
+/// todos los request que el fotografo ha recibido
+
+router.get('/request/userAll/:userPhoto',getAllbyUserPhotographer)
+
 router.get('/request/:id',getOneRequest)
+
+
 router.patch('/request/:id',updateRequest)
 router.get('/request',getRequest)
 /****************FOTOS************ */

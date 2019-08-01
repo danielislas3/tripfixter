@@ -40,6 +40,7 @@ class RequestConfirm extends Component {
   //requestData={...this.props}
   open = () => this.setState({ open: true })
   close = () => (this.setState({ open: false }))
+  
   enviarDatos=()=>{
     console.log(this.state)
     Axios.post(`http://localhost:4000/api/request`,this.state)

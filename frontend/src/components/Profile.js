@@ -7,6 +7,7 @@ import useForm from "../hooks/useForm";
 import AuthService from '../services/auth'
 //import userService from '../services/user'
 import Axios from 'axios';
+import DropRequest from './DropRequest';
 
 
 
@@ -32,7 +33,7 @@ const Profile = (props) => {
       const cloudinaryPhoto = await Axios.post(`http://localhost:4000/api/upload`, photo)
      
       Axios.patch(`http://localhost:4000/api/users/${loggedUser._id}`,{photo:cloudinaryPhoto.data.photo}).then(res=>{
-        console.log(props.history.push)
+        
       })
       .catch(console.log)
 
@@ -135,7 +136,7 @@ const Profile = (props) => {
      
     </Modal.Content>
   </Modal>
-        
+        <DropRequest/>
       </>}
 
       
