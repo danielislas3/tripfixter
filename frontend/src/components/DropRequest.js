@@ -1,5 +1,5 @@
 import React,{useEffect, useState} from 'react'
-import { Dropdown } from 'semantic-ui-react'
+import { Dropdown,Form } from 'semantic-ui-react'
 import Axios from 'axios';
 const base_url='http://localhost:4000/api'
 
@@ -11,6 +11,8 @@ export default function DropRequest (props) {
    //aqui quiero que traiga los request que yo he hecho
  
    const [request, setRequest] = useState([])
+   
+   const [usuarioDrop, setUsuarioDrop] = useState([])
   
   useEffect(() => {
   Axios.get(`${base_url}/request/userCreados/${userLogueado._id}`)
@@ -28,9 +30,10 @@ export default function DropRequest (props) {
   //aqui quiero que traiga los request que yo he hecho
   
   
-const crearFolder =(e,{...request})=>{
-  console.log(request)
+const crearFolder =(e,request)=>{
   
+  setUsuarioDrop([request.value])
+  console.log(usuarioDrop)
 
  }
 
@@ -49,6 +52,8 @@ const crearFolder =(e,{...request})=>{
   
   return(
     <>
+
+
     {request[0]? <Dropdown
     placeholder='Select Friend'
     fluid
@@ -56,9 +61,16 @@ const crearFolder =(e,{...request})=>{
     options={usuarisoFotografos}
     onChange={crearFolder}
 
-  />: <p>No tienes request</p> }
-  
+  />: <p>No tienes request</p> 
 
+}
+  {  usuarioDrop?<>
+  <Form>
+      <Form.Input label='SUBIR FOTOS' type="file" name="photo" multiple />
+ </Form>
+    {console.log(usuarioDrop)}
+    </>:<p>asdsaas</p>
+  }
   </>
 
    )
