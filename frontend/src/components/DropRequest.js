@@ -23,13 +23,19 @@ export default function DropRequest (props) {
       const arrFotos=cloudinaryPhoto.data.photos.map((urlImg,i)=>{
         return(urlImg.secure_url)
       })
-     //voy a crear los modelos de fotos
-     arrFotos.forEach((img,i )=> {
-      const fotografias={
-        img:img,
-        _creator:usuarioDrop[0]
-      }
-      Axios.post(`${base_url}/photos`,fotografias)
+      
+
+      const album=[]
+
+      arrFotos.forEach((img,i )=> {
+        const fotografias={
+          img:img,
+        }
+        album.push(fotografias)
+        console.log(fotografias)
+      })
+      
+      Axios.post(`${base_url}/folders`,{"photos":arrFotos,"_creator":usuarioDrop[0]})
       .then(({ data }) => {
         console.log(data)
         setImagenes(prevState => {
@@ -37,8 +43,28 @@ export default function DropRequest (props) {
         })
       })
       .catch(err => console.log(err))
+     //voy a crear los modelos de fotos
+    ///////////////
+    //  arrFotos.forEach((img,i )=> {
+    //   const fotografias={
+    //     img:img,
+    //     _creator:usuarioDrop[0]
+    //   }
+    //   album.push(fotografias)
+    //   console.log(fotografias)
 
-     });
+    //   Axios.post(`${base_url}/photos`,fotografias)
+    //   .then(({ data }) => {
+    //     console.log(data)
+    //     setImagenes(prevState => {
+    //       return [...prevState, data._id]
+    //     })
+    //   })
+    //   .catch(err => console.log(err))
+
+    //  });
+    //  console.log(album)
+     /////////////
     //  const fotografias={
     //    img:arrFotos,
     //    _creator:usuarioDrop[0]
@@ -64,6 +90,7 @@ export default function DropRequest (props) {
       setRequest(prevState => {
         return [...prevState,...data.request]
       })
+      //aqui voy
     }).catch(err => console.log(err))
 
     

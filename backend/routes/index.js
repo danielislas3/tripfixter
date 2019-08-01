@@ -42,10 +42,7 @@ router.get('/request/userP/:userPhoto',getOneByUserPhotographer)
 /// todos los request que el fotografo ha recibido
 
 router.get('/request/userAll/:userPhoto',getAllbyUserPhotographer)
-
 router.get('/request/:id',getOneRequest)
-
-
 router.patch('/request/:id',updateRequest)
 router.get('/request',getRequest)
 /****************FOTOS************ */

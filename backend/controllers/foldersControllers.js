@@ -31,12 +31,16 @@ exports.createPhotos=(req,res,nex)=>{
 }
 exports.createFolder = (req, res) => {
   // Extraes los valores que te envía el usuario desde la página de creación del folder
+  console.log(req.body)
+  console.log(req.body.photos[1])
+  console.log(req.body._creator)
   const {photos, _creator} = req.body
+
   // Creas un arreglo con las promesas de la creación de cada foto en mongo
   const photosPromisse = []
   // iteras las fotos que recibes del usuario para extraer solo la url y agregar al creador
   // con esto generas el create que responde con una promesa sin resolver
-  photos.map(photo => photosPromisse.push(Photos.create({img: photo.url, _creator})))
+  photos.map((photo,i) => photosPromisse.push(Photos.create({img: photo, _creator})))
   // Con PromisseAll resuelves cada promesa dentro del arreglo que generamos por cada foto
   Promise.all(photosPromisse)
   .then( imgsArr => {
