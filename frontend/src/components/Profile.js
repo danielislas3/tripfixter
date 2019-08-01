@@ -90,9 +90,7 @@ const Profile = (props) => {
       <Link  to="/subirFotos">
       </Link>
       <Button>Mis fotos</Button>
-      <Form>
-        <Form.Input label='SUBIR FOTOS' type="file" name="photo" multiple  />
-      </Form>
+
 
 
         {/* <Image avatar={true} src={loggedUser.photo} size='small' circular /> */}
@@ -137,7 +135,8 @@ const Profile = (props) => {
     </Modal.Content>
   </Modal>
         <DropRequest/>
-      </>}
+
+    </>}
 
       
   />

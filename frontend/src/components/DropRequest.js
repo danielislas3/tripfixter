@@ -5,14 +5,14 @@ const base_url='http://localhost:4000/api'
 
 
 
-export default function DropRequest () {
+export default function DropRequest (props) {
   const userLogueado = JSON.parse(localStorage.getItem("loggedUser"))
 
    //aqui quiero que traiga los request que yo he hecho
  
    const [request, setRequest] = useState([])
   
-   useEffect(() => {
+  useEffect(() => {
   Axios.get(`${base_url}/request/userCreados/${userLogueado._id}`)
     .then(({ data }) => {
       setRequest(prevState => {
@@ -22,36 +22,43 @@ export default function DropRequest () {
 
     
     
-  },[])
-  console.log(request)
+  },[userLogueado._id])
+  
 
   //aqui quiero que traiga los request que yo he hecho
   
   
-  if(!request) return <p>Loading</p>
+const crearFolder =(e,{...request})=>{
+  console.log(request)
+  
+
+ }
+
+
   const usuarisoFotografos = request.map((req)=>(
    
     {
       key: req.userPhoto.name,
-      text: req.userPhoto.name,
-      value: req.userPhoto.name,
+      text: `${req.userPhoto.name} ${req.userPhoto.lastName}`,
+      value: req.userPhoto._id,
       image: { avatar: true, src: req.userPhoto.photo },
     }
     
-    //<p key={i}>{req.userPhoto.name}</p>
+   
   ))
   
   return(
-
     <>
-     
-
-  <Dropdown
+    {request[0]? <Dropdown
     placeholder='Select Friend'
     fluid
     selection
     options={usuarisoFotografos}
-  />
+    onChange={crearFolder}
+
+  />: <p>No tienes request</p> }
+  
+
   </>
 
    )
