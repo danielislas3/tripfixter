@@ -15,7 +15,6 @@ import DropRequest from './DropRequest';
 const Profile = (props) => {
   const rawUser = localStorage.getItem("loggedUser");
   const usuarioPar = JSON.parse(rawUser)
-  
   const [loggedUser] = useState(usuarioPar) 
   const [form, handleInput] = useForm();
 
@@ -32,11 +31,11 @@ const Profile = (props) => {
       
       const cloudinaryPhoto = await Axios.post(`http://localhost:4000/api/upload`, photo)
      
-      Axios.patch(`http://localhost:4000/api/users/${loggedUser._id}`,{photo:cloudinaryPhoto.data.photo}).then(res=>{
-        
+      Axios.patch(`http://localhost:4000/api/users/${loggedUser._id}`,{photo:cloudinaryPhoto.data.photo})
+      .then(res=>{
+
       })
       .catch(console.log)
-
       console.log(cloudinaryPhoto.data.photo)
 
 

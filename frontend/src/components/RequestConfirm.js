@@ -2,27 +2,10 @@ import React, { Component } from 'react'
 import Axios from 'axios'
 import { Button, Confirm,Form } from 'semantic-ui-react'
 
-// function filter(category) {
-//   Axios.post(`http://localhost:4000/api/request`)
-//     .then(({ data }) => {
-//       setposts(prevState => {
-//         return [...data.posts]
-//       })
-//     })
-//     .catch(err => console.log(err))
-// }
-
 
 class RequestConfirm extends Component {
 
-  // createReq(){
-  //   Axios.post('http://localhost:4000/api/request',)
-  //   .then(({data}=>{
-  //     this.setState(prevState =>() ...prevState,
-  //       ...data.)
-  //   })
-  //   )
-  // }
+
 
   handleInput = e=>{
     e.persist()
@@ -40,7 +23,7 @@ class RequestConfirm extends Component {
   //requestData={...this.props}
   open = () => this.setState({ open: true })
   close = () => (this.setState({ open: false }))
-  
+
   enviarDatos=()=>{
     console.log(this.state)
     Axios.post(`http://localhost:4000/api/request`,this.state)

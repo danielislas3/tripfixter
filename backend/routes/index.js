@@ -27,7 +27,6 @@ router.get('/users/:id',getOneUser)
 router.post('/users',createUser)
 //UPDATE
 router.patch('/users/:id',updateUser)
-router.post('/upload', uploadCloud.single('photo'), uploadOne)
 //DELETEr
 router.delete('/users/:id',deleteUser)
 /****************REQUEST************ */
@@ -54,7 +53,8 @@ router.get('/request',getRequest)
 //folder de una sesion
 
 //para un archivo: uploadCloud.single('photos')
-router.post('/photos', uploadCloud.array('photos', 10), upload)
+router.post('/photos', uploadCloud.array('photos', 4), upload)
+router.post('/upload', uploadCloud.single('photo'), uploadOne)
 
 
 

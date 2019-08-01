@@ -19,6 +19,7 @@ export default function HomeContainer() {
         })
       })
       .catch(err => console.log(err))
+      
   }, [])
 
   function filter(category) {
