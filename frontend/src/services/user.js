@@ -1,5 +1,5 @@
 import axios from 'axios'
-const baseURL = 'https://tripfixer.herokuapp.com/api'
+const baseURL = 'http://localhost:4000/api'
  
 class userService{
   constructor() {
@@ -18,7 +18,7 @@ class userService{
     return this.service.get(`/users/${id}`)
   }
 
-  updateUser( data) {
+  updateUser(data) {
     return this.service.patch(`/users/${data._id}`, data)
   }
   //para eliminar cuenta

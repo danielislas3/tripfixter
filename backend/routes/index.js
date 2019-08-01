@@ -27,7 +27,7 @@ router.get('/users/:id',getOneUser)
 router.post('/users',createUser)
 //UPDATE
 router.patch('/users/:id',updateUser)
-//router.post('/upload', uploadCloud.single('photo'), upload)
+router.post('/upload', uploadCloud.single('photo'), uploadOne)
 //DELETEr
 router.delete('/users/:id',deleteUser)
 /****************REQUEST************ */

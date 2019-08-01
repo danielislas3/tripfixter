@@ -36,12 +36,23 @@ class RequestConfirm extends Component {
   state = { open: false,
     user:JSON.parse((localStorage.loggedUser))._id,
     userPhoto:this.props[0]._id
-    
   }
   //requestData={...this.props}
   open = () => this.setState({ open: true })
-  close = () => this.setState({ open: false })
+  close = () => (this.setState({ open: false }))
+  enviarDatos=()=>{
+    console.log(this.state)
+    Axios.post(`http://localhost:4000/api/request`,this.state)
+    .then(({ data }) => {
+      this.setState(prevState => {
+        return [data,prevState]
+      })
+    })
+    .catch(err => console.log(err))
 
+   alert("Solicitud enviada")
+    this.close()
+  }
   render() {
     //id usuario
     
@@ -70,7 +81,7 @@ class RequestConfirm extends Component {
             <input type="date" name = "date" onChange={this.handleInput} />
           </Form.Field>
         </Form>
-        } open={this.state.open} onCancel={this.close} onConfirm={this.close} />
+        } open={this.state.open} onCancel={this.close} onConfirm={this.enviarDatos} />
       </>
     )
   }

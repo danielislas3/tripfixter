@@ -1,12 +1,12 @@
 import React,{useState} from 'react'
+import {Link} from 'react-router-dom'
 import {Container,Header,Button , Modal,Form} from 'semantic-ui-react'
 import { Card, Icon,Image } from 'semantic-ui-react'
 import Navbar from './Navbar';
 import useForm from "../hooks/useForm";
-
 import AuthService from '../services/auth'
 //import userService from '../services/user'
-//import Axios from 'axios';
+import Axios from 'axios';
 
 
 
@@ -15,30 +15,52 @@ const Profile = (props) => {
   const rawUser = localStorage.getItem("loggedUser");
   const usuarioPar = JSON.parse(rawUser)
   
-  const [loggedUser, setLoggedUser] = useState(usuarioPar) 
+  const [loggedUser] = useState(usuarioPar) 
   const [form, handleInput] = useForm();
 
 
-  const authService = new AuthService();	
+  const authService = new AuthService();
+
+
 
   const selectPhoto = async e => {
+    
 		try {
 			const photo = new FormData();
 			photo.append("photo", e.target.files[0]);
-      const response = await //userService.updateUser(photo);
-      console.log(photo)
-      //Axios.post(`http://localhost:4000/api/users/${loggedUser._id}`, {photo})
-      console.log(loggedUser._id)
-			setLoggedUser(
-				{...loggedUser,
-				photo: response.data.user.image}
-			)
-			localStorage.setItem("loggedUser", JSON.stringify(response.data.user));
+      
+      const cloudinaryPhoto = await Axios.post(`http://localhost:4000/api/upload`, photo)
+     
+      Axios.patch(`http://localhost:4000/api/users/${loggedUser._id}`,{photo:cloudinaryPhoto.data.photo}).then(res=>{
+        console.log(props.history.push)
+      })
+      .catch(console.log)
+
+      console.log(cloudinaryPhoto.data.photo)
+
 
 		} catch (error) {
 			console.log(error);
 		}
   }
+  // const selectPhotos = async e => {
+	// 	try {
+	// 		const photo = new FormData();
+	// 		photo.append("photo", e.target.files[0]);
+  //     const response = await userService.updateUser(photo);
+  //     console.log(photo)
+  //     Axios.post(`http://localhost:4000/api/users/${loggedUser._id}`, {photo})
+  //     console.log(loggedUser._id)
+	// 		setLoggedUser(
+	// 			{...loggedUser,
+	// 			photo: response.data.user.image}
+	// 		)
+	// 		localStorage.setItem("loggedUser", JSON.stringify(response.data.user));
+
+	// 	} catch (error) {
+	// 		console.log(error);
+	// 	}
+  //}
   const handleEdit = () => {
     console.log("form: "+{form});
 		authService
@@ -51,7 +73,9 @@ const Profile = (props) => {
 			})
 			.catch(err => {
 				console.log(err);
-			});
+      });
+      alert("Usuario Actualizado ")
+
   };
 
   
@@ -62,7 +86,14 @@ const Profile = (props) => {
 
       <Container text style={{ marginTop: '7em' }}>
       <Header as='h1'>Esto es el perfil</Header>
-      <Button to="/fotos">Mis fotos</Button>
+      <Link  to="/subirFotos">
+      </Link>
+      <Button>Mis fotos</Button>
+      <Form>
+        <Form.Input label='SUBIR FOTOS' type="file" name="photo" multiple  />
+      </Form>
+
+
         {/* <Image avatar={true} src={loggedUser.photo} size='small' circular /> */}
 
       <Card
@@ -71,11 +102,9 @@ const Profile = (props) => {
       meta={loggedUser.location.city}
       description={loggedUser.description}
       extra={<>
-      <Form>
-        <Form.Input type="file" label='Editar foto' name='photo' onChange={selectPhoto} />
-      </Form>
 
-    <Modal trigger={<Button icon >  <Icon name='edit' /> Editar perfil</Button>}>
+
+    <Modal  trigger={<Button icon >  <Icon name='edit' /> Editar perfil</Button> }>
       <Modal.Header>Editar perfil</Modal.Header>
      <Modal.Content image>
       <Image wrapped size='medium' src={loggedUser.photo} />
@@ -85,6 +114,8 @@ const Profile = (props) => {
        <Form size='large' as='form'>
 
 
+        <Form.Input type="file" label='Editar foto000' name='photo' onChange={selectPhoto} />
+    
           <Form.Input label="Name"type="text" name="name" placeholder='Name' onChange={handleInput} defaultValue={loggedUser.name}  />
 
           <Form.Input label="Last Name" type="text"  name="lastName" placeholder='Last Name' onChange={handleInput} defaultValue={loggedUser.lastName}  />
