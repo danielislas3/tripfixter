@@ -8,7 +8,7 @@ import AuthService from '../services/auth'
 //import userService from '../services/user'
 import Axios from 'axios';
 import DropRequest from './DropRequest';
-const base_url='http://localhost:4000/api'
+const base_url='https://tripfixer.herokuapp.com/api'
 
 
 //obtener mis folders como fotografo

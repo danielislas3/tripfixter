@@ -26,7 +26,7 @@ class RequestConfirm extends Component {
 
   enviarDatos=()=>{
     console.log(this.state)
-    Axios.post(`http://localhost:4000/api/request`,this.state)
+    Axios.post(`https://tripfixer.herokuapp.com/api/request`,this.state)
     .then(({ data }) => {
       this.setState(prevState => {
         return [data,prevState]

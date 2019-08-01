@@ -2,7 +2,7 @@
 import React,{useState,useEffect} from 'react'
 import { Card } from 'semantic-ui-react'
 import Axios from 'axios'
-const base_url='http://localhost:4000/api'
+const base_url='https://tripfixer.herokuapp.com/api'
 //const [fotosURL, setFots] = useState([])
 
 
