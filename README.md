@@ -7,7 +7,7 @@ _[Tipfixer](https://peaceful-knuth-4e5b50.netlify.com/) es una aplicación que t
 _Estas instrucciones te permitirán obtener una copia del proyecto en funcionamiento en tu máquina local para propósitos de desarrollo y pruebas._
 ### CREDENCIALES PARA JUECES 📋
 ```
-ADMIN: user1@iron.com
+USER1: user1@iron.com
 PASS:123
 USER: user2@iron.com 
 PASS:123
