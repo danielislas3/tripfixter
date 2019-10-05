@@ -18,7 +18,7 @@ exports.login=(req,res,next)=>{
   })
   //segundo cookie
   res.cookie('signature',signature,{
-    httpOly:true,
+    httpOnly:true,
     secure:true
   })
   // aqui ya estamos logueados
