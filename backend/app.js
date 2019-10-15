@@ -29,7 +29,7 @@ const app = express();
 
 app.use(cors({
   credentials:true,
-  origin:['http://localhost:3000', 'https://peaceful-knuth-4e5b50.netlify.com']
+  origin:['http://localhost:3000', 'https://peaceful-knuth-4e5b50.netlify.com', 'http://danielislas3.com','https://danielislas3.com']
   }))
   
 app.use(passport.initialize())
@@ -52,6 +52,11 @@ app.use(require('node-sass-middleware')({
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs')
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(require('winston-request-logger').create(logger, {
+  'responseTime': ':responseTime ms',		// outputs '5 ms'
+  'url': ':url[pathname]'					// outputs '/some/path'
+}));
 //app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 
 

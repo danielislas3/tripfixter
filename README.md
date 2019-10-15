@@ -1,5 +1,5 @@
 # Tipfixer📸
-_[Tipfixer](https://peaceful-knuth-4e5b50.netlify.com/) es una aplicación que te ayuda a encontrar personas apacionadas a la fotografia y a los viajes. Es esta app puedes encontrar el compañero fotogénico  que siempre has deceado
+[Tipfixer](https://peaceful-knuth-4e5b50.netlify.com/) es una aplicación que te ayuda a encontrar personas apacionadas a la fotografia y a los viajes. Es esta app puedes encontrar el compañero fotogénico  que siempre has deceado
 
 
 ## Comenzando 🚀
