@@ -29,7 +29,7 @@ const app = express();
 
 app.use(cors({
   credentials:true,
-  origin:['http://localhost:3000', 'https://peaceful-knuth-4e5b50.netlify.com', 'http://danielislas3.com']
+  origin:['http://localhost:3000', 'https://peaceful-knuth-4e5b50.netlify.com', 'http://danielislas3.com','https://danielislas3.com']
   }))
   
 app.use(passport.initialize())
