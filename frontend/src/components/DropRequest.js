@@ -16,7 +16,7 @@ export default function DropRequest (props) {
 		try {
       const photos = new FormData();
       for (let i=0; i<=e.target.files.length;i++){
-        photos.append("photos", e.target.files[i]);
+        photos.append("photos", e.target.files[i])
       }
       const cloudinaryPhoto = await Axios.post(`${base_url}/photosCloud`, photos)
 
