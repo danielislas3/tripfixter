@@ -13,7 +13,7 @@ const cors = require('cors')
 
 
 mongoose
-  .connect(process.env.DB, {useNewUrlParser: true})
+  .connect(process.env.DB, {useNewUrlParser: true, useUnifiedTopology: true },)
   .then(x => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
   })
@@ -62,7 +62,10 @@ app.locals.title = 'Express - Generated with IronGenerator';
 
 
 const index = require('./routes/index');
+const personal = require('./routes/personal');
 app.use('/api', index);
+
+app.use('/personal', personal);
 
 
 module.exports = app;

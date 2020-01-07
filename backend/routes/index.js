@@ -10,6 +10,7 @@ const {verifyToken}= require('../config/auth/jwt')
 
 
 
+
 ///LOGIN
 router.post('/signup',signup)
 router.post('/login',passport.authenticate('local'),login)
@@ -63,10 +64,6 @@ router.get('/photosAll/:id',getAllPhotos)
 //todos los folders
 router.get('/folders/:id',getOneFolder)
 router.post('/folders',createFolder)
-
-
-
-
 
 
 module.exports = router;
